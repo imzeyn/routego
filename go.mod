@@ -1,2 +1,3 @@
 module github.com/imzeyn/routego
-go 1.14
+
+go 1.22.4

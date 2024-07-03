@@ -378,4 +378,26 @@ myUrls := []routego.Path{
 	},
 }  
 ```
+## Serve Files
+```go
+package main
 
+import (
+    "goroute"
+)
+
+func main() {
+    server := goroute.Server{
+        Addr: ":8080",
+        ServeFiles: map[string]string{
+            "url":    "/static/",
+            "folder": "./public",
+        },
+    }
+
+    server.Listen()
+}
+```
+In this example, the server serves requests under the `/static/` URL path from the local `./public` directory. For example, a request to `http://localhost:8080/static/css/styles.css` in the browser causes the server to serve `./public/css/styles.css`.
+## Note
+Although the ServeFiles feature is suitable for small projects and development environments, it is not recommended in a production environment. Instead, it will be safer and more performant to use professional web servers such as Apache2 and Nginx to serve static files. These servers perform better in high-traffic environments and offer more configuration options for security.
